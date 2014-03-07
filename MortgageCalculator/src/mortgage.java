@@ -1,24 +1,25 @@
 
 
 
-public class mortgage {
+public class Mortgage {
 
-	public mortgage(int principal, double simpleRate, int termMonths , int compoundingPeriods){
+	public Mortgage(int principal, double simpleRate, int termMonths , int compoundingPeriods){
 		
-		initPrincipal = principal;
-		numberOfPayments = termMonths;
-		
-		effectiveRate = Math.pow(1 + (simpleRate/compoundingPeriods),compoundingPeriods);
-		//calculates effective annual rate + 1
-		effectiveRate = Math.pow(effectiveRate, 1.0/12) - 1;
-		//calculates effective monthly rate 
-		
-		payments = (initPrincipal * effectiveRate) / 
-				( 1 - Math.pow((1 + effectiveRate),-numberOfPayments));
-		//calculates the $ of each payment by rearranging the present value of an annuity formula
-		
-		totInterest = payments * numberOfPayments - initPrincipal;
-		//calculates the total interest paid over the life of the mortgage.
+			initPrincipal = principal;
+			numberOfPayments = termMonths;
+			
+			effectiveRate = Math.pow(1 + (simpleRate/compoundingPeriods),compoundingPeriods);
+			//calculates effective annual rate + 1
+			
+			effectiveRate = Math.pow(effectiveRate, 1.0/12) - 1;
+			//calculates effective monthly rate 
+			
+			payments = (initPrincipal * effectiveRate) / 
+					( 1 - Math.pow((1 + effectiveRate),-numberOfPayments));
+			//calculates the $ of each payment by rearranging the present value of an annuity formula
+			
+			totInterest = payments * numberOfPayments - initPrincipal;
+			//calculates the total interest paid over the life of the mortgage.
 	}
 	
 	//return the value of each mortgage payment
@@ -41,6 +42,7 @@ public class mortgage {
 	/*returns the $ value of the interest portition of the payment
 	 *  at the payment  number paymentNumber
 	*/
+	
 	public double getCurrentInterest(int paymentNumber){
 		
 		double balance = initPrincipal;
@@ -53,6 +55,7 @@ public class mortgage {
 				principal = payments - interest;
 				balance -= principal;
 			}
+			
 			//returns the interest paid in the 'paymentNumber'th payment
 	    return interest;
 	}
@@ -61,7 +64,9 @@ public class mortgage {
 	 * returns the $ value of principal porition of 
 	 * the payment , payment number paymentNumber
 	 */
+	
 	public double getCurrentPrincipal(int paymentNumber){
+		
 		double balance = initPrincipal;
 		double interest = 0;	
 		double principal = 0;	
@@ -72,6 +77,7 @@ public class mortgage {
 				principal = payments - interest;
 				balance -= principal;
 			}
+			
 			//returns the value of the principal paid down in the 'paymentNumber'th payment
 	    return principal;
 		
@@ -94,6 +100,7 @@ public class mortgage {
 				principal = payments - interest;
 				balance -= principal;
 			}
+			
 			//returns the ending balance after paymentNumber payments
 	    return balance;
 	}
@@ -104,6 +111,7 @@ public class mortgage {
 	 * interest and how much is going towards paying principal
 	 * and the ending principal balance after the payment.
 	 */
+	
 	public void printMortgageTable(){
 		
 		//instance variables
