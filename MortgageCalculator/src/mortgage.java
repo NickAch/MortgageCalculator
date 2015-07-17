@@ -1,8 +1,14 @@
-
-
+package src;
 
 public class Mortgage {
-
+	
+	//global variables
+	private double effectiveRate;
+	private int numberOfPayments;
+	private int initPrincipal;
+	private double payments;
+	private double totInterest;
+	
 	public Mortgage(int principal, double simpleRate, int termMonths , int compoundingPeriods){
 		
 			initPrincipal = principal;
@@ -146,13 +152,11 @@ public class Mortgage {
 		}
 	}
 	
+		
 	//make spreadsheet function
 	//public void makeCSV(){}
 	
-	//global variables
-	private double effectiveRate;
-	private int numberOfPayments;
-	private int initPrincipal;
-	private double payments;
-	private double totInterest;
+
 }
+
+
